@@ -1,11 +1,8 @@
 import "./home.scss";
-import { Snowfall } from "react-snowfall";
 
 export default function Home() {
   return (
     <div className="home container">
-      <Snowfall color="#ffffff" snowflakeCount={150} />
-
       <div className="home__stats">
         <section className="stats">
           <h2 className="stats__title">Общая статистика:</h2>

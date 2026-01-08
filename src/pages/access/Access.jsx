@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "./access.scss";
-import { Snowfall } from 'react-snowfall';
 
 const initialData = [
     { id: 1, name: "Figma", domain: "www.figma.com", available: "Да" },
@@ -34,7 +33,6 @@ export default function Access() {
 
     return (
         <div className="container">
-            <Snowfall color="#ffffff" />
             <table className="control__table">
                 <thead className="control__head">
                     <tr className="control__row control__row--head">

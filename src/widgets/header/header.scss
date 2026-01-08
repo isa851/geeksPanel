@@ -3,7 +3,7 @@
     height: 100px;
     &_header{
         display: flex;
-        gap: 325px;
+        gap: 200px;
         padding: 20px 0 ;
 
         &_logo{
@@ -29,6 +29,24 @@
                 }
                 &.active {
                     color: #fee642;
+                }
+            }
+        }
+        &_exit{
+            &_btn{
+                color: #000000;
+                border: none;
+                font-size: 18px;
+                transition: color 0.3s;
+                background-color: #fee642;
+                border-radius: 5px;
+                padding: 10px 20px;
+                width: 200px;
+                margin-top: 5px;
+
+                &:hover {
+                    transform: scale(1.1);
+                    transition: transform 0.3s;
                 }
             }
         }

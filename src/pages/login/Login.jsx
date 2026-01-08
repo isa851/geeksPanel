@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logoLogin from "../../shared/imgs/logoLogin.png";
 import "./login.scss";
-import Snowfall from "react-snowfall";
 
 export default function Login() {
   const [login, setLogin] = useState("");
@@ -25,7 +24,6 @@ export default function Login() {
 
   return (
     <div className="login">
-      <Snowfall color="#ffffff"/>
       <div className="container">
         <div className="login_logo">
           <img src={logoLogin} alt="logoLogin" />

@@ -1,11 +1,9 @@
 import bakLap from "../../shared/imgs/desktopcomputer-amico1.png"
 import "./addLap.scss";
-import { Snowfall } from 'react-snowfall';
 
 export default function AddLap() {
     return (
         <div className="container">
-            <Snowfall color="#ffffff" />
             <div className="addLap">
                 <div className="addLap_forms">
                     <form className="addLap_forms_form">

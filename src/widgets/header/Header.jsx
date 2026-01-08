@@ -1,9 +1,19 @@
 import { NavLink } from "react-router-dom";
 import headerLogo from "../../shared/imgs/headerLogo.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./header.scss";
 
 export default function Header() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("isAuth");
+        
+        navigate("/login", { replace: true });
+
+        window.location.reload(); 
+    };
     return (
         <header className="headers">
             <div className="container">
@@ -17,7 +27,6 @@ export default function Header() {
                             />
                         </Link>
                     </div>
-
                     <div className="headers_header_navs">
                         <NavLink
                         to="/"
@@ -72,6 +81,9 @@ export default function Header() {
                         >
                             Добавить ноутбук
                         </NavLink>
+                    </div>
+                    <div className="headers_header_exit">
+                        <button onClick={handleLogout} className="headers_header_exit_btn">Выйти</button>
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ import AddLap from "../../pages/addLap/AddLap";
 import NotFound from "../../pages/notFound/NotFound";
 import Home from "../../pages/home/Home";
 import "../styles/app.scss";
+import { Snowfall } from "react-snowfall";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(
@@ -27,6 +28,7 @@ const App = () => {
   return (
     <BrowserRouter>
       {isAuth && <Header />}
+      <Snowfall color="#ffffff" />
 
       <Routes>
         <Route
