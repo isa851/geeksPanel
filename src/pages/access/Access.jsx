@@ -7,6 +7,10 @@ const initialData = [
     { id: 2, name: "Habr", domain: "www.habr.com", available: "Да" },
     { id: 3, name: "VS-Code", domain: "www.visual-studio-code.com", available: "Да" },
     { id: 4, name: "CS-1.6", domain: "N/T", available: "Нет" },
+    { id: 5, name: "CS-1.6", domain: "N/T", available: "Нет" },
+    { id: 6, name: "CS-1.6", domain: "N/T", available: "Нет" },
+    { id: 7, name: "CS-1.6", domain: "N/T", available: "Нет" },
+    { id: 8, name: "CS-1.6", domain: "N/T", available: "Нет" },
 ];
 
 export default function Access() {
