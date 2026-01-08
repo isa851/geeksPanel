@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import headerLogo from "../../shared/imgs/headerLogo.png";
+import { Link } from "react-router-dom";
 import "./header.scss";
 
 export default function Header() {
@@ -8,16 +9,28 @@ export default function Header() {
             <div className="container">
                 <div className="headers_header">
                     <div className="headers_header_logo">
-                        <img
-                            className="headers_header_logo_img"
-                            src={headerLogo}
-                            alt="headerLogo"
-                        />
+                        <Link to="/">
+                            <img
+                                className="headers_header_logo_img"
+                                src={headerLogo}
+                                alt="headerLogo"
+                            />
+                        </Link>
                     </div>
 
                     <div className="headers_header_navs">
                         <NavLink
-                            to="/"
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "headers_header_navs_link active"
+                                : "headers_header_navs_link"
+                        }
+                        >
+                            Главная
+                        </NavLink>
+                        <NavLink
+                            to="/control"
                             className={({ isActive }) =>
                                 isActive
                                     ? "headers_header_navs_link active"
@@ -39,14 +52,14 @@ export default function Header() {
                         </NavLink>
 
                         <NavLink
-                            to="/blocking"
+                            to="/listLap"
                             className={({ isActive }) =>
                                 isActive
                                     ? "headers_header_navs_link active"
                                     : "headers_header_navs_link"
                             }
                         >
-                            Блокировки
+                            Список ноутов
                         </NavLink>
 
                         <NavLink

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./access.scss";
+import { Snowfall } from 'react-snowfall';
 
 const initialData = [
     { id: 1, name: "Figma", domain: "www.figma.com", available: "Да" },
@@ -9,7 +10,7 @@ const initialData = [
 ];
 
 export default function Access() {
-    const [openId, setOpenId] = useState(null); // ID строки, где открыто меню
+    const [openId, setOpenId] = useState(null);
     const [data, setData] = useState(initialData);
 
     const toggleDropdown = (id) => {
@@ -24,11 +25,12 @@ export default function Access() {
             return item;
         });
         setData(newData);
-        setOpenId(null); // Закрываем меню после выбора
+        setOpenId(null);
     };
 
     return (
         <div className="container">
+            <Snowfall color="#ffffff" />
             <table className="control__table">
                 <thead className="control__head">
                     <tr className="control__row control__row--head">
@@ -44,7 +46,6 @@ export default function Access() {
                             <td className="control__cell">{item.name}</td>
                             <td className="control__cell">{item.domain}</td>
                             <td className="control__cell">
-                                {/* Кастомный Dropdown */}
                                 <div className="dropdown">
                                     <div 
                                         className={`dropdown__header ${openId === item.id ? 'dropdown__header--open' : ''}`}

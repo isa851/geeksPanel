@@ -4,10 +4,11 @@ import Login from "../../pages/login/Login";
 import Control from "../../pages/control/Control";
 import Header from "../../widgets/header/Header";
 import Access from "../../pages/access/Access";
-import Blocking from "../../pages/blocking/Blocking";
+import ListLap from "../../pages/listLap/ListLap";
 import AddLap from "../../pages/addLap/AddLap";
-import "../styles/app.scss";
 import NotFound from "../../pages/notFound/NotFound";
+import Home from "../../pages/home/Home";
+import "../styles/app.scss";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(
@@ -29,6 +30,12 @@ const App = () => {
 
       <Routes>
         <Route
+        path="/"
+        element={
+          isAuth ? <Home /> : <Navigate to="/login" replace />
+        }
+        />
+        <Route
           path="*"
           element={<NotFound />}
         />
@@ -45,13 +52,13 @@ const App = () => {
           }
         />
         <Route
-          path="/blocking"
+          path="/listLap"
           element={
-            isAuth ? <Blocking /> : <Navigate to="/login" replace />
+            isAuth ? <ListLap /> : <Navigate to="/login" replace />
           }
         />
         <Route
-          path="/"
+          path="/control"
           element={
             isAuth ? <Control /> : <Navigate to="/login" replace />
           }

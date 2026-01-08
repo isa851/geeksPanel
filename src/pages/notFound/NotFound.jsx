@@ -1,5 +1,6 @@
 import "./notFound.scss";
 import { useNavigate } from "react-router-dom";
+import { Snowfall } from "react-snowfall";
 
 export default function NotFound() {
     const navigate = useNavigate();
@@ -9,6 +10,7 @@ export default function NotFound() {
     };
     return (
         <div className="container">
+            <Snowfall color="#ffffff" />
             <div className="notFound">
                 <h1 className="notFound_number">404</h1>
                 <p className="notFound_text">увы но этой страницы не существует</p>

@@ -1,25 +1,27 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logoLogin from "../../shared/imgs/logoLogin.png";
-import { useEffect } from "react";
 import "./login.scss";
-import Snowfall from 'react-snowfall';
+import Snowfall from "react-snowfall";
 
 export default function Login() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
   const handleLogin = () => {
     if (login === "1" && password === "1") {
       localStorage.setItem("isAuth", "true");
-      setIsAuth(true); 
+
       navigate("/", { replace: true });
+
+      window.location.reload();
+    } else {
+      setError("Неверный логин или пароль");
     }
   };
-
-  
 
   return (
     <div className="login">
@@ -62,10 +64,14 @@ export default function Login() {
             </div>
 
             {error && (
-              <p style={{ color: "red", marginTop: 10 }}>{error}</p>
+              <p style={{ color: "red", marginTop: "10px" }}>
+                {error}
+              </p>
             )}
 
-            <button onClick={handleLogin}>Войти</button>
+            <button onClick={handleLogin}>
+              Войти
+            </button>
           </div>
         </div>
       </div>
