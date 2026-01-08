@@ -30,42 +30,33 @@ const App = () => {
 
       <Routes>
         <Route
-        path="/"
-        element={
-          isAuth ? <Home /> : <Navigate to="/login" replace />
-        }
-        />
-        <Route
-          path="/add"
-          element={
-            isAuth ? <AddLap /> : <Navigate to="/login" replace />
-          }
-        />
-        <Route
-          path="/access"
-          element={
-            isAuth ? <Access /> : <Navigate to="/login" replace />
-          }
-        />
-        <Route
-          path="/listLap"
-          element={
-            isAuth ? <ListLap /> : <Navigate to="/login" replace />
-          }
-        />
-        <Route
-          path="/control"
-          element={
-            isAuth ? <Control /> : <Navigate to="/login" replace />
-          }
-        />
-
-        <Route
           path="/login"
           element={
             isAuth ? <Navigate to="/" replace /> : <Login setIsAuth={setIsAuth} />
           }
         />
+
+        <Route
+          path="/"
+          element={isAuth ? <Home /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/add"
+          element={isAuth ? <AddLap /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/access"
+          element={isAuth ? <Access /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/listLap"
+          element={isAuth ? <ListLap /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/control"
+          element={isAuth ? <Control /> : <Navigate to="/login" replace />}
+        />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
