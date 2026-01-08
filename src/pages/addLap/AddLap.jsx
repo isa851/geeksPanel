@@ -5,14 +5,16 @@ export default function AddLap() {
     return (
         <div className="container">
             <div className="addLap">
-                <div className="addLap_form">
-                    <div className="addLap_form_inputs">
-                        <input className="addLap_form_input" type="text" placeholder="Имя ноута"/>
-                        <input className="addLap_form_input" type="text" placeholder="ID"/>
-                        <input className="addLap_form_input" type="text" placeholder="UUID"/>
-                        <input className="addLap_form_input" type="text" placeholder="Права"/>
-                    </div>
-                    <button className="addLap_form_button">Добавить новый ноутбук</button>
+                <div className="addLap_forms">
+                    <form className="addLap_forms_form">
+                        <div className="addLap_forms_form_inputs">
+                        <input className="addLap_forms_form_inputs_input" type="text" placeholder="Имя ноута"/>
+                        <input className="addLap_forms_form_inputs_input" type="text" placeholder="ID"/>
+                        <input className="addLap_forms_form_inputs_input" type="text" placeholder="UUID"/>
+                        <input className="addLap_forms_form_inputs_input" type="text" placeholder="Права"/>
+                        </div>
+                        <button className="addLap_forms_form_button">Добавить новый ноутбук</button>
+                    </form>
                 </div>
                 <div className="addLap_bak">
                     <img className="addLap_bak_img" src={bakLap} alt="" />

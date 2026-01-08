@@ -1,0 +1,30 @@
+.notFound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px 0;
+    &_number{
+        font-size: 250px;
+        color: #FFFFFF;
+        text-align: center;
+    }
+    &_text{
+        font-size: 22px;
+        color: #FFFFFF;
+        text-align: center;
+    }
+    &_btn{
+        margin-top: 50px;
+        width: 20%;
+        height: 56px;
+        border-radius: 10px;
+        border: none;
+        background-color: #fee642;
+        color: #000;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+}

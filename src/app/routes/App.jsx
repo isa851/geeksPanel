@@ -7,6 +7,7 @@ import Access from "../../pages/access/Access";
 import Blocking from "../../pages/blocking/Blocking";
 import AddLap from "../../pages/addLap/AddLap";
 import "../styles/app.scss";
+import NotFound from "../../pages/notFound/NotFound";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(
@@ -27,6 +28,10 @@ const App = () => {
       {isAuth && <Header />}
 
       <Routes>
+        <Route
+          path="*"
+          element={<NotFound />}
+        />
         <Route
           path="/add"
           element={
