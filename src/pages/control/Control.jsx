@@ -1,5 +1,6 @@
 import "./control.scss";
 
+
 const data = [
     {
         id: 1,
@@ -78,6 +79,7 @@ const data = [
 export function Control() {
   return (
     <div className="container">
+      
       <table className="control__table">
         <thead className="control__head"  >
           <tr className="control__row control__row--head">
