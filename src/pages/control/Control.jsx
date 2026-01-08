@@ -1,5 +1,5 @@
 import "./control.scss";
-import Snowfall from 'react-snowfall';
+
 
 const data = [
     {
@@ -79,7 +79,7 @@ const data = [
 export function Control() {
   return (
     <div className="container">
-      <Snowfall color="#ffffff"/>
+      
       <table className="control__table">
         <thead className="control__head"  >
           <tr className="control__row control__row--head">
