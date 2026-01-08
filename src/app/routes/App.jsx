@@ -36,10 +36,6 @@ const App = () => {
         }
         />
         <Route
-          path="*"
-          element={<NotFound />}
-        />
-        <Route
           path="/add"
           element={
             isAuth ? <AddLap /> : <Navigate to="/login" replace />
@@ -70,6 +66,7 @@ const App = () => {
             isAuth ? <Navigate to="/" replace /> : <Login setIsAuth={setIsAuth} />
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
