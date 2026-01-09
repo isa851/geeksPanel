@@ -1,0 +1,125 @@
+$card-bg: #34363D;
+$input-bg: #2C2E35;
+$accent-yellow: #ffeb3b;
+$text-gray: #a0a0a0;
+
+.notification-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .notification-container {
+    display: flex;
+    align-items: stretch; 
+    justify-content: space-between;
+    gap: 50px; 
+    max-width: 1200px; 
+    width: 100%;
+    padding: 20px;
+  }
+
+  .notification-form {
+    background: $card-bg;
+    padding: 40px;
+    border-radius: 12px;
+    flex: 0 0 500px; 
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input[type="text"] {
+        background: $input-bg; 
+        border: 1px solid #444;
+        padding: 15px;
+        color: white;
+        font-size: 16px;
+        outline: none;
+        border-radius: 8px;
+
+        &::placeholder {
+          color: $text-gray;
+        }
+      }
+
+      .hint {
+        color: $text-gray;
+        font-size: 12px;
+        text-align: right;
+      }
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: $text-gray;
+      font-size: 14px;
+      cursor: pointer;
+
+.chec {
+  appearance: none;
+  -webkit-appearance: none;
+  
+  width: 18px;
+  height: 18px;
+  background-color: #34363D;
+  border-radius: 3px; 
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  border: 1px solid #4A4D55; 
+}
+
+.chec:checked {
+  background-color: #f0c330; 
+}
+
+.chec:checked::after {
+  content: '✓';
+  position: absolute;
+  color: #000;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+    }
+
+    .submit-btn {
+      background-color: $accent-yellow;
+      border: none;
+      padding: 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .notification-illustration {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%; 
+      max-width: 600px; 
+      height: auto;
+      object-fit: contain;
+    }
+  }
+}
+

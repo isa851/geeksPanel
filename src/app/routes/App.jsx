@@ -11,6 +11,7 @@ import Control from "../../pages/control/Control";
 import { Snowfall } from "react-snowfall";
 import AddSite from "../../pages/addSite/AddSite";
 import Demonstration from "../../pages/demonstration/Demonstration";
+import Notification from "../../pages/notification/Notification";
 import "../styles/app.scss";
 
 const defaultLaptops = [
@@ -68,6 +69,7 @@ const App = () => {
         <Route path="/login" element={isAuth ? <Navigate to="/" replace /> : <Login setIsAuth={setIsAuth} />} />
         <Route path="/" element={isAuth ? <Home /> : <Navigate to="/login" replace />} />
         
+        <Route path="notification" element={isAuth ? <Notification/> : <Navigate to="/login" replace />} />
         <Route path="/demonstration" element={isAuth ? <Demonstration /> : <Navigate to="/login" replace />} />
         <Route path="/addSite" element={isAuth ? <AddSite onAdd={handleAddSite} /> : <Navigate to="/login" replace />} />
         <Route path="/access" element={isAuth ? <Access data={sites} setData={setSites} /> : <Navigate to="/login" replace />} />

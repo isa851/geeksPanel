@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { Link } from "react-router-dom";
 import "./home.scss";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -115,7 +116,11 @@ export default function Home() {
             disabled={!isSystemOn}
             onClick={() => setIsSystemOn(false)}
           >Отключить</button>
-          <button className="btn btn--yellow">Уведомление</button>
+          <Link to="/notification" style={{ textDecoration: 'none' }}>
+            <button className="btn btn--yellow" style={{ width: '100%' }}>
+              Уведомление
+            </button>
+          </Link>
         </div>
       </div>
     </div>
