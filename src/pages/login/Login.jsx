@@ -11,7 +11,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (login === "1" && password === "1") {
+    if (login === "root" && password === "1234") {
       localStorage.setItem("isAuth", "true");
 
       navigate("/", { replace: true });

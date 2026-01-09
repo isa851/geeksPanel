@@ -9,7 +9,6 @@ export default function Home() {
   const [isSystemOn, setIsSystemOn] = useState(true);
   const [timeLeft, setTimeLeft] = useState(0);
 
-  // Логика таймера
   useEffect(() => {
     const STORAGE_KEY = "timerTargetDate";
     let targetDate = localStorage.getItem(STORAGE_KEY);

@@ -1,89 +1,66 @@
+
+.header-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-site-btn {
+    background: transparent;
+    border: 1px solid #FEE642;
+    color: #FEE642;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+
+    &:hover {
+        background: rgba(254, 230, 66, 0.1);
+    }
+}
+
 .control {
-    &__header-actions {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    &__search-container {
-        position: relative;
-        width: 300px;
-    }
-
-    &__search-input {
-        width: 100%;
-        background-color: #34363D;
-        border: 1px solid #FEE642;
-        border-radius: 12px;
-        padding: 20px 19px 20px 19px;
-        color: #fff;
-        font-size: 16px;
-        outline: none;
-
-        &::placeholder {
-            color: #888;
-        }
-    }
-
     &__table {
-        padding: 5px 0;
         width: 100%;
         border-collapse: separate;
         border-spacing: 0 8px;
-        color: #fff;
     }
 
     &__cells {
-        background: #34363D;
-        padding: 14px 16px;
-        text-align: left;
-        white-space: nowrap;
         color: #FEE642;
-        font-size: 18px;
-
-        &:first-child { border-radius: 20px 0 0 20px; }
-        &:last-child { border-radius: 0 20px 20px 0; }
+        text-align: left;
+        padding: 20px;
+        font-weight: 400;
+        font-size: 16px;
     }
 
     &__cell {
-        padding: 14px 16px;
-        text-align: left;
-        white-space: nowrap;
+        padding: 12px 20px;
         color: #FFFFFF;
-        font-size: 18px;
-        border: none;
-        overflow: visible !important; 
+        font-size: 15px;
+        background: #34363D; 
 
         &:first-child { border-radius: 12px 0 0 12px; }
         &:last-child { border-radius: 0 12px 12px 0; }
-    }
-
-    &__row {
-        &:nth-child(even) .control__cell {
-            background: #34363D;
-        }
-        &:nth-child(odd) .control__cell {
-            background: transparent;
-        }
     }
 }
 
 .dropdown {
     position: relative;
     width: 140px;
-    font-family: sans-serif;
+    user-select: none;
 
     &__header {
         border: 1px solid #FEE642;
-        border-radius: 8px; 
-        padding: 6px 15px;
-        cursor: pointer;
+        border-radius: 6px;
+        padding: 8px 12px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: transparent; 
+        cursor: pointer;
+        font-size: 14px;
         color: #fff;
-        font-size: 16px;
-        transition: all 0.3s ease;
+        background: transparent;
 
         &--open {
             border-bottom-left-radius: 0;
@@ -97,7 +74,13 @@
         display: inline-block;
         padding: 3px;
         transform: rotate(45deg);
+        transition: transform 0.2s;
         margin-bottom: 2px;
+
+        &--up {
+            transform: rotate(-135deg);
+            margin-bottom: -2px;
+        }
     }
 
     &__list {
@@ -105,22 +88,41 @@
         top: 100%;
         left: 0;
         right: 0;
-        background-color: #34363D;
+        background: #34363D;
         border: 1px solid #FEE642;
         border-top: none;
-        border-radius: 0 0 8px 8px;
-        z-index: 100; 
-        overflow: hidden;
+        z-index: 100;
+        border-radius: 0 0 6px 6px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     &__item {
-        padding: 10px 15px;
+        padding: 10px 12px;
         cursor: pointer;
+        font-size: 14px;
         color: #fff;
 
         &:hover {
-            background-color: #444750;
+            background: #3d3f47;
             color: #FEE642;
         }
+
+        &--selected {
+            color: #FEE642;
+            background: rgba(254, 230, 66, 0.05);
+        }
     }
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.1s;
+    
+    &:active { transform: scale(0.9); }
+    &:hover svg path { fill: #ff5252; }
 }

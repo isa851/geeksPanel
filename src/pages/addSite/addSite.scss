@@ -1,0 +1,128 @@
+$card-bg: #34363D;
+$accent-color: #fce34d;
+$text-color: #ffffff;
+$placeholder-color: #757575;
+
+.add-site-container {
+  display: flex;
+  align-items: center;
+  gap: 169px;
+
+  .add-site-card {
+    background-color: $card-bg;
+    padding: 50px 40px;
+    border-radius: 8px;
+    width: 600px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+
+    .add-site-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      height: 100%;
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .input-label {
+          color: $placeholder-color;
+          font-size: 13px;
+          margin-bottom: 8px;
+        }
+
+        input {
+          background: transparent;
+          border: 1px solid #5C5E61;
+          padding: 12px;
+          color: white;
+          border-radius: 4px;
+          outline: none;
+          
+          &:focus {
+            border-color: $accent-color;
+          }
+        }
+
+        .custom-select {
+          position: relative;
+          cursor: pointer;
+          user-select: none;
+
+          .select-trigger {
+            border: 1px solid #FEE642;
+            padding: 12px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: $text-color;
+
+            .arrow-icon {
+              width: 10px;
+              height: 10px;
+              border-right: 2px solid white;
+              border-bottom: 2px solid white;
+              transform: rotate(45deg);
+              margin-bottom: 4px;
+              transition: 0.3s;
+            }
+          }
+
+          &.active {
+            .select-trigger {
+              border-color: $accent-color;
+              .arrow-icon {
+                transform: rotate(-135deg);
+                margin-top: 4px;
+              }
+            }
+          }
+
+          .select-options {
+            position: absolute;
+            top: 110%;
+            left: 0;
+            right: 0;
+            background: $card-bg;
+            border: 1px solid #5C5E61;
+            border-radius: 4px;
+            z-index: 10;
+            overflow: hidden;
+
+            .option-item {
+              padding: 12px;
+              color: $text-color;
+              transition: 0.2s;
+
+              &:hover {
+                background: #5C5E61;
+              }
+            }
+          }
+        }
+      }
+
+      .submit-btn {
+        background-color: $accent-color;
+        border: none;
+        padding: 14px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: auto; 
+      }
+    }
+  }
+
+  .add-site-image {
+    max-width: 500px;
+    img {
+        width: 500px;
+        height: 500px;
+    }
+  }
+}

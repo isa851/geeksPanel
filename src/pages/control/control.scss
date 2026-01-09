@@ -8,7 +8,7 @@
 .control__row--head {
     .control__cells {
         background: #34363D;
-        padding: 14px 16px;
+        padding: 20px;
         text-align: left;
         white-space: nowrap;
         color: #FEE642;
@@ -62,6 +62,8 @@
         color: #e6ff4f;
         border: 1px solid #e6ff4f;
         background: transparent;
+        padding: 12px 20px;
+
 
         &:hover {
             background: #e6ff4f;
@@ -72,6 +74,8 @@
     &--disabled {
         background: #ff4d4f;
         color: #fff;
+        padding: 12px 20px;
+
     }
 }
 

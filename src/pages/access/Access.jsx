@@ -1,45 +1,47 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./access.scss";
 
-const initialData = [
-    { id: 1, name: "Figma", domain: "www.figma.com", available: "Да" },
-    { id: 2, name: "Habr", domain: "www.habr.com", available: "Да" },
-    { id: 3, name: "VS-Code", domain: "www.visual-studio-code.com", available: "Да" },
-    { id: 4, name: "CS-1.6", domain: "N/T", available: "Нет" },
-    { id: 5, name: "CS-1.6", domain: "N/T", available: "Нет" },
-    { id: 6, name: "CS-1.6", domain: "N/T", available: "Нет" },
-    { id: 7, name: "CS-1.6", domain: "N/T", available: "Нет" },
-    { id: 8, name: "CS-1.6", domain: "N/T", available: "Нет" },
-];
+export default function Access({ data, setData }) {
+    const [openDropdown, setOpenDropdown] = useState(null);
 
-export default function Access() {
-    const [openId, setOpenId] = useState(null);
-    const [data, setData] = useState(initialData);
-
-    const toggleDropdown = (id) => {
-        setOpenId(openId === id ? null : id);
+    const toggleDropdown = (id, field) => {
+        if (openDropdown?.id === id && openDropdown?.field === field) {
+            setOpenDropdown(null);
+        } else {
+            setOpenDropdown({ id, field });
+        }
     };
 
-    const handleSelect = (id, status) => {
-        const newData = data.map(item => {
-            if (item.id === id) {
-                return { ...item, available: status === "Разрешён" ? "Да" : "Нет" };
-            }
-            return item;
-        });
-        setData(newData);
-        setOpenId(null);
+    const handleSelect = (id, field, value) => {
+        setData(prevData => 
+            prevData.map(item => 
+                item.id === id ? { ...item, [field]: value } : item
+            )
+        );
+        setOpenDropdown(null); 
+    };
+
+    const handleDelete = (id) => {
+        setData(data.filter(item => item.id !== id));
     };
 
     return (
         <div className="container">
+            <div className="header-actions">
+                <Link to="/addSite">
+                    <button className="add-site-btn">Добавить сайт</button>
+                </Link>
+            </div>
             <table className="control__table">
                 <thead className="control__head">
-                    <tr className="control__row control__row--head">
+                    <tr className="control__row">
                         <th className="control__cells">Название</th>
                         <th className="control__cells">Домен</th>
+                        <th className="control__cells">Скачивание файлов</th>
                         <th className="control__cells">Статус</th>
                         <th className="control__cells">Доступно</th>
+                        <th className="control__cells"></th>
                     </tr>
                 </thead>
                 <tbody className="control__body">
@@ -48,28 +50,65 @@ export default function Access() {
                             <td className="control__cell">{item.name}</td>
                             <td className="control__cell">{item.domain}</td>
                             <td className="control__cell">
-                                <div className="dropdown">
-                                    <div 
-                                        className={`dropdown__header ${openId === item.id ? 'dropdown__header--open' : ''}`}
-                                        onClick={() => toggleDropdown(item.id)}
-                                    >
-                                        {item.available === "Да" ? "Разрешён" : "Запрещён"}
-                                        <span className="dropdown__arrow"></span>
-                                    </div>
-                                    
-                                    {openId === item.id && (
-                                        <div className="dropdown__list">
-                                            <div className="dropdown__item" onClick={() => handleSelect(item.id, "Разрешён")}>Разрешён</div>
-                                            <div className="dropdown__item" onClick={() => handleSelect(item.id, "Запрещён")}>Запрещён</div>
-                                        </div>
-                                    )}
-                                </div>
+                                <Dropdown 
+                                    value={item.downloads} 
+                                    isOpen={openDropdown?.id === item.id && openDropdown?.field === 'downloads'}
+                                    toggle={() => toggleDropdown(item.id, 'downloads')}
+                                    onSelect={(val) => handleSelect(item.id, 'downloads', val)}
+                                />
                             </td>
-                            <td className="control__cell">{item.available}</td>              
+                            <td className="control__cell">
+                                <Dropdown 
+                                    value={item.status} 
+                                    isOpen={openDropdown?.id === item.id && openDropdown?.field === 'status'}
+                                    toggle={() => toggleDropdown(item.id, 'status')}
+                                    onSelect={(val) => handleSelect(item.id, 'status', val)}
+                                />
+                            </td>
+                            <td className="control__cell">{item.available}</td>
+                            <td className="control__cell">
+                                <button className="delete-btn" onClick={() => handleDelete(item.id)}>
+                                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3H0V1H5V0H11V1H16V3H15V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM13 3H3V16H13V3ZM5 14H7V5H5V14ZM9 14H11V5H9V14Z" fill="#E53935"/>
+                                    </svg>
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+        </div>
+    );
+}
+
+function Dropdown({ value, isOpen, toggle, onSelect }) {
+    const options = ["Разрешён", "Запрещён"];
+
+    return (
+        <div className="dropdown" style={{ position: 'relative' }}>
+            <div 
+                className={`dropdown__header ${isOpen ? 'dropdown__header--open' : ''}`} 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    toggle();
+                }}
+            >
+                {value}
+                <span className={`dropdown__arrow ${isOpen ? 'dropdown__arrow--up' : ''}`}></span>
+            </div>
+            {isOpen && (
+                <div className="dropdown__list" style={{ position: 'absolute', zIndex: 100 }}>
+                    {options.map(option => (
+                        <div 
+                            key={option} 
+                            className={`dropdown__item ${option === value ? 'dropdown__item--selected' : ''}`}
+                            onClick={() => onSelect(option)}
+                        >
+                            {option}
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
