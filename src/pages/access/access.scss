@@ -1,0 +1,126 @@
+.control {
+    &__header-actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__search-container {
+        position: relative;
+        width: 300px;
+    }
+
+    &__search-input {
+        width: 100%;
+        background-color: #34363D;
+        border: 1px solid #FEE642;
+        border-radius: 12px;
+        padding: 20px 19px 20px 19px;
+        color: #fff;
+        font-size: 16px;
+        outline: none;
+
+        &::placeholder {
+            color: #888;
+        }
+    }
+
+    &__table {
+        padding: 5px 0;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        color: #fff;
+    }
+
+    &__cells {
+        background: #34363D;
+        padding: 14px 16px;
+        text-align: left;
+        white-space: nowrap;
+        color: #FEE642;
+        font-size: 18px;
+
+        &:first-child { border-radius: 20px 0 0 20px; }
+        &:last-child { border-radius: 0 20px 20px 0; }
+    }
+
+    &__cell {
+        padding: 14px 16px;
+        text-align: left;
+        white-space: nowrap;
+        color: #FFFFFF;
+        font-size: 18px;
+        border: none;
+        overflow: visible !important; 
+
+        &:first-child { border-radius: 12px 0 0 12px; }
+        &:last-child { border-radius: 0 12px 12px 0; }
+    }
+
+    &__row {
+        &:nth-child(even) .control__cell {
+            background: #34363D;
+        }
+        &:nth-child(odd) .control__cell {
+            background: transparent;
+        }
+    }
+}
+
+.dropdown {
+    position: relative;
+    width: 140px;
+    font-family: sans-serif;
+
+    &__header {
+        border: 1px solid #FEE642;
+        border-radius: 8px; 
+        padding: 6px 15px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent; 
+        color: #fff;
+        font-size: 16px;
+        transition: all 0.3s ease;
+
+        &--open {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    &__arrow {
+        border: solid #FEE642;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        margin-bottom: 2px;
+    }
+
+    &__list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #34363D;
+        border: 1px solid #FEE642;
+        border-top: none;
+        border-radius: 0 0 8px 8px;
+        z-index: 100; 
+        overflow: hidden;
+    }
+
+    &__item {
+        padding: 10px 15px;
+        cursor: pointer;
+        color: #fff;
+
+        &:hover {
+            background-color: #444750;
+            color: #FEE642;
+        }
+    }
+}

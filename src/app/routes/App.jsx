@@ -1,64 +1,57 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Login from "../../pages/login/Login";
-import Control from "../../pages/control/Control";
 import Header from "../../widgets/header/Header";
-import Access from "../../pages/access/Access";
 import ListLap from "../../pages/listLap/ListLap";
 import AddLap from "../../pages/addLap/AddLap";
-import NotFound from "../../pages/notFound/NotFound";
 import Home from "../../pages/home/Home";
-import "../styles/app.scss";
+import NotFound from "../../pages/notFound/NotFound";
+import Access from "../../pages/access/Access";
+import Control from "../../pages/control/Control";
 import { Snowfall } from "react-snowfall";
+import "../styles/app.scss";
+
+const defaultData = [
+    { id: 1, name: "WIN-DESC133341", number: "001", DeviceID: "348I-WCE4-SD-4V", rights: "Учебный" },
+    { id: 2, name: "WIN-DESC166511", number: "002", DeviceID: "348I-WCE4-SD-4V", rights: "Root" },
+];
 
 const App = () => {
-  const [isAuth, setIsAuth] = useState(
-    localStorage.getItem("isAuth") === "true"
-  );
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth") === "true");
+  
+  const [laptops, setLaptops] = useState(() => {
+    const saved = localStorage.getItem("laptops_list");
+    return saved ? JSON.parse(saved) : defaultData;
+  });
 
   useEffect(() => {
-    const handleStorage = () => {
-      setIsAuth(localStorage.getItem("isAuth") === "true");
-    };
+    localStorage.setItem("laptops_list", JSON.stringify(laptops));
+  }, [laptops]);
 
+  const handleAddLaptop = (newLap) => {
+    setLaptops((prev) => [...prev, { ...newLap, id: Date.now() }]);
+  };
+
+  useEffect(() => {
+    const handleStorage = () => setIsAuth(localStorage.getItem("isAuth") === "true");
     window.addEventListener("storage", handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter> 
       {isAuth && <Header />}
       <Snowfall color="#ffffff" />
 
       <Routes>
-        <Route
-          path="/login"
-          element={
-            isAuth ? <Navigate to="/" replace /> : <Login setIsAuth={setIsAuth} />
-          }
-        />
-
-        <Route
-          path="/"
-          element={isAuth ? <Home /> : <Navigate to="/login" replace />}
-        />
-        <Route
-          path="/add"
-          element={isAuth ? <AddLap /> : <Navigate to="/login" replace />}
-        />
-        <Route
-          path="/access"
-          element={isAuth ? <Access /> : <Navigate to="/login" replace />}
-        />
-        <Route
-          path="/listLap"
-          element={isAuth ? <ListLap /> : <Navigate to="/login" replace />}
-        />
-        <Route
-          path="/control"
-          element={isAuth ? <Control /> : <Navigate to="/login" replace />}
-        />
-
+        <Route path="/login" element={isAuth ? <Navigate to="/" replace /> : <Login setIsAuth={setIsAuth} />} />
+        <Route path="/" element={isAuth ? <Home /> : <Navigate to="/login" replace />} />
+        
+        <Route path="/control" element={isAuth ? <Control /> : <Navigate to="/login" replace />} />
+        <Route path="/access" element={isAuth ? <Access /> : <Navigate to="/login" replace />} />
+        <Route path="/add" element={isAuth ? <AddLap onAdd={handleAddLaptop} /> : <Navigate to="/login" replace />} />
+        <Route path="/listLap" element={isAuth ? <ListLap data={laptops} setData={setLaptops} /> : <Navigate to="/login" replace />} />
+        
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

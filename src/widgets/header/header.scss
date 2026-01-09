@@ -1,6 +1,7 @@
 .headers{
     background-color: #141618;
     height: 100px;
+    margin-bottom: 40px;
     &_header{
         display: flex;
         gap: 200px;
@@ -50,21 +51,5 @@
                 }
             }
         }
-        // &_profile{
-        //     &_imgs{
-        //         display: flex;
-        //         gap: 10px;
-
-        //         &_img{
-        //             width: 50px;
-        //             height: 50px;
-        //         }
-        //         &_text{
-        //             color: #FFFFFF;
-        //             font-size: 18px;
-        //             padding-top: 10px;
-        //         }
-        //     }
-        // }
     }
 }
