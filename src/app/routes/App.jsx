@@ -27,7 +27,6 @@ const defaultSites = [
 const App = () => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth") === "true");
   
-  // Состояние для ноутбуков
   const [laptops, setLaptops] = useState(() => {
     const saved = localStorage.getItem("laptops_list");
     return saved ? JSON.parse(saved) : defaultLaptops;

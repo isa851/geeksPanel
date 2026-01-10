@@ -7,7 +7,6 @@ export default function AddSite({ onAdd }) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   
-  // Состояния для формы
   const [name, setName] = useState("");
   const [domain, setDomain] = useState("");
   const [selectedValue, setSelectedValue] = useState("Разрешён");
@@ -18,17 +17,16 @@ export default function AddSite({ onAdd }) {
     e.preventDefault();
     if (!name || !domain) return alert("Заполните все поля");
 
-    // Создаем объект нового сайта
     const newSite = {
       name,
       domain,
       downloads: selectedValue,
-      status: "Разрешён", // Значение по умолчанию
-      available: "Да"     // Значение по умолчанию
+      status: "Разрешён", 
+      available: "Да"   
     };
 
     onAdd(newSite);
-    navigate("/"); // Возвращаемся в таблицу
+    navigate("/"); 
   };
 
   return (
