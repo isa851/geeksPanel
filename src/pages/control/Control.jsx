@@ -1,16 +1,34 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./control.scss";
 
-const data = [
+const rawData = [
     { id: 1, name: "WIN-DESC133341", num: "001", state: "Выключено", battery: "100%", time: "Не известно", rights: "Учебный", observe: "Не доступно" },
     { id: 2, name: "WIN-DESC133341", num: "002", state: "Включено", battery: "45%", time: "00:01:32", rights: "Учебный", observe: "Доступно" },
-    { id: 3, name: "WIN-DESC133341", num: "003", state: "Выключено", battery: "Не известно", time: "Не известно", rights: "Stuff", observe: "Не доступно" },
-    { id: 4, name: "WIN-DESC133341", num: "004", state: "Включено", battery: "92%", time: "00:01:32", rights: "Stuff", observe: "Доступно" },
-    { id: 5, name: "WIN-DESC133341", num: "005", state: "Выключено", battery: "Не известно", time: "Не известно", rights: "Учебный", observe: "Не доступно" },
+    { id: 3, name: "WIN-DESC133341", num: "003", state: "Включено", battery: "80%", time: "01:10:05", rights: "Stuff", observe: "доступно" },  
+    { id: 4, name: "WIN-DESC133341", num: "004", state: "Включено", battery: "92%", time: "00:01:32", rights: "Stuff", observe: "доступно" },
+    { id: 5, name: "WIN-DESC133341", num: "005", state: "Включено", battery: "10%", time: "00:05:00", rights: "Учебный", observe: "не доступно" },
     { id: 6, name: "WIN-DESC133341", num: "006", state: "В питании", battery: "92%", time: "00:01:32", rights: "Учебный", observe: "Доступно" },
-    { id: 7, name: "WIN-DESC133341", num: "007", state: "Выключено", battery: "Не известно", time: "Не известно", rights: "Учебный", observe: "Не доступно" }
+    { id: 7, name: "WIN-DESC133341", num: "007", state: "Выключено", battery: "Не известно", time: "Не известно", rights: "Учебный", observe: "НЕ ДОСТУПНО" }
 ];
+
+const data = rawData.map((item) => {
+  const checkStatus = item.observe.trim().toLowerCase();
+
+  if (checkStatus === "не доступно") {
+    return {
+      ...item,
+      state: "Выключено",
+      battery: "Не известно",
+      time: "Не известно",
+      observe: "Не доступно",
+    };
+  }
+
+  return {
+    ...item,
+    observe: "Доступно",
+  };
+});
 
 export function Control() {
   return (
@@ -38,7 +56,6 @@ export function Control() {
               <td className="control__cell">{item.rights}</td>
               <td className="control__cell">
                 {item.observe === "Доступно" ? (
-                  /* Ссылка для активной кнопки */
                   <Link 
                     to="/demonstration" 
                     className="control__btn control__btn--active"
@@ -46,7 +63,6 @@ export function Control() {
                     {item.observe}
                   </Link>
                 ) : (
-                  /* Обычный текст для неактивной кнопки */
                   <span className="control__btn control__btn--disabled">
                     {item.observe}
                   </span>
