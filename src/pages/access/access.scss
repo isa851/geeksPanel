@@ -126,3 +126,13 @@
     &:active { transform: scale(0.9); }
     &:hover svg path { fill: #ff5252; }
 }
+.control__cell {
+    .domain-wrapper {
+        max-width: 400px;         
+        white-space: nowrap;   
+        overflow: hidden;      
+        text-overflow: ellipsis;
+        cursor: help;          
+    }
+}
+

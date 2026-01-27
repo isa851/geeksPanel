@@ -15,9 +15,14 @@ export default function Access({ data, setData }) {
 
     const handleSelect = (id, field, value) => {
         setData(prevData => 
-            prevData.map(item => 
-                item.id === id ? { ...item, [field]: value } : item
-            )
+            prevData.map(item => {
+                if (item.id === id) {
+                    // Если меняем статус, автоматически обновляем "Доступно"
+                    const isAvailable = value === "Разрешён" ? "Да" : "Нет";
+                    return { ...item, [field]: value, available: isAvailable };
+                }
+                return item;
+            })
         );
         setOpenDropdown(null); 
     };
@@ -38,7 +43,7 @@ export default function Access({ data, setData }) {
                     <tr className="control__row">
                         <th className="control__cells">Название</th>
                         <th className="control__cells">Домен</th>
-                        <th className="control__cells">Скачивание файлов</th>
+                        {/* Столбец "Скачивание файлов" удален */}
                         <th className="control__cells">Статус</th>
                         <th className="control__cells">Доступно</th>
                         <th className="control__cells"></th>
@@ -49,14 +54,7 @@ export default function Access({ data, setData }) {
                         <tr className="control__row" key={item.id}>
                             <td className="control__cell">{item.name}</td>
                             <td className="control__cell">{item.domain}</td>
-                            <td className="control__cell">
-                                <Dropdown 
-                                    value={item.downloads} 
-                                    isOpen={openDropdown?.id === item.id && openDropdown?.field === 'downloads'}
-                                    toggle={() => toggleDropdown(item.id, 'downloads')}
-                                    onSelect={(val) => handleSelect(item.id, 'downloads', val)}
-                                />
-                            </td>
+                            {/* Ячейка "Скачивание файлов" удалена */}
                             <td className="control__cell">
                                 <Dropdown 
                                     value={item.status} 

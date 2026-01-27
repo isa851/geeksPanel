@@ -116,3 +116,44 @@
   }
 }
 
+
+.Toastify__toast-container {
+    width: 400px;
+}
+
+.custom-toast {
+    background-color: #141618 !important; 
+    color: white !important;
+    border-radius: 4px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        background-color: #50B772; 
+    }
+
+    .Toastify__toast-body {
+        font-family: sans-serif;
+        padding-left: 10px;
+        
+        &::before {
+            content: "Уведомление";
+            display: block;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+    }
+
+    .Toastify__close-button {
+        color: white;
+        opacity: 0.7;
+    }
+}

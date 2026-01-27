@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bakLap from "../../shared/imgs/desktopcomputer-amico1.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import "./addLap.scss";
 
 export default function AddLap({ onAdd }) {
@@ -12,13 +14,39 @@ export default function AddLap({ onAdd }) {
     const [deviceId, setDeviceId] = useState("");
     const [rights, setRights] = useState("Учебный");
 
+    const notify = () => toast("Вы успешно добавили новый ноутбук", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        className: 'custom-toast',
+        bodyClassName: 'custom-toast-body',
+    });
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!name || !idValue || !deviceId) {
-            alert("Пожалуйста, заполните все поля");
+        
+        const nameRegex = /^WIN-DESC\d+$/; 
+        const idRegex = /^\d+$/;       
+        const deviceRegex = /^[A-Z0-9]+-[A-Z0-9]+-[A-Z0-9]+-[A-Z0-9]+$/; 
+
+        if (!nameRegex.test(name)) {
+            alert("Имя должно быть в формате WIN-DESC133341");
+            return;
+        }
+        if (!idRegex.test(idValue)) {
+            alert("ID должен состоять из 3 цифр (например, 001)");
+            return;
+        }
+        if (!deviceRegex.test(deviceId)) {
+            alert("Device ID должен соответствовать формату (например, 348I-WCE4-SD-4V)");
             return;
         }
 
+        notify(); 
+        
         onAdd({
             name: name,
             number: idValue,
@@ -26,7 +54,9 @@ export default function AddLap({ onAdd }) {
             rights: rights
         });
 
-        navigate("/listLap");
+        setTimeout(() => {
+            navigate("/listLap");
+        }, 2000);
     };
 
     return (
@@ -71,6 +101,7 @@ export default function AddLap({ onAdd }) {
                     <img className="addLap_bak_img" src={bakLap} alt="иллюстрация" />
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

@@ -53,21 +53,21 @@
 .control__btn {
     display: inline-block;
     padding: 6px 14px;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 13px;
     font-weight: 500;
     transition: all 0.2s ease;
 
     &--active {
-        color: #e6ff4f;
-        border: 1px solid #e6ff4f;
+        color: #FFFFFF;
+        border: 1px solid #FEE642;
         background: transparent;
         padding: 12px 20px;
 
 
         &:hover {
             background: #e6ff4f;
-            color: #2a2d34;
+            color: #000000;
         }
     }
 
