@@ -147,7 +147,9 @@ export default function Home() {
 
       <div className="home__actions">
         <div className="actions-grid">
-          <button className="action-btn">Пользователи</button>
+          <Link to="/users" className="action-btn">
+            Пользователи
+          </Link>
           <Link to="/notification" className="action-btn">
             Уведомление
           </Link>

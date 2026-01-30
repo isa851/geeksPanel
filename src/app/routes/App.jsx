@@ -11,6 +11,8 @@ import Control from "../../pages/control/Control";
 import AddSite from "../../pages/addSite/AddSite";
 import Demonstration from "../../pages/demonstration/Demonstration";
 import Notification from "../../pages/notification/Notification";
+import Users from "../../pages/users/Users";
+import AddUser from "../../pages/addUser/AddUser";
 import "../styles/app.scss";
 
 const defaultLaptops = [
@@ -69,6 +71,9 @@ const App = () => {
         <Route path="/login" element={isAuth ? <Navigate to="/" replace /> : <Login setIsAuth={setIsAuth} />} />
         <Route path="/" element={isAuth ? <Home /> : <Navigate to="/login" replace />} />
         
+        
+        <Route path="/users" element={isAuth ? <Users /> : <Navigate to="/login" replace />} />
+        <Route path="/addUser" element={isAuth ? <AddUser /> : <Navigate to="/login" replace />} />
         <Route path="/notification" element={isAuth ? <Notification/> : <Navigate to="/login" replace />} />
         <Route path="/demonstration" element={isAuth ? <Demonstration /> : <Navigate to="/login" replace />} />
         <Route path="/addSite" element={isAuth ? <AddSite onAdd={handleAddSite} /> : <Navigate to="/login" replace />} />

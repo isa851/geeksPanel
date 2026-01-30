@@ -81,19 +81,19 @@ button {
   }
 }
 
-@media screen and (max-width: 1300px) {
-  .dostup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+// @media screen and (max-width: 1300px) {
+//   .dostup {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 100vh;
     
-    .dostup_title {
-      font-size: 2rem;
-      color: #fee642;
-    }
-  }
-}
+//     .dostup_title {
+//       font-size: 2rem;
+//       color: #fee642;
+//     }
+//   }
+// }
 
 @media screen and (max-width: 1200px) {
   .container {
