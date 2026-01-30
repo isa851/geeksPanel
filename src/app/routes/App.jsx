@@ -60,6 +60,9 @@ const App = () => {
 
   return (
     <BrowserRouter> 
+    <div className="dostup">
+      <h1 className="dostup_title">Сайт доступен только на пк</h1>
+    </div>
       {isAuth && <Header />}
 
       <Routes>

@@ -1,8 +1,8 @@
 $bg-main: #24262b;
-$bg-card: #34363d;
+$bg-card: #2f3137;
 $yellow: #ffe743;
-$red: #ff4d4d;
-$text-white: #ffffff;
+$text-dark: #000;
+$text-white: #fff;
 
 .home {
   color: $text-white;
@@ -22,7 +22,7 @@ $text-white: #ffffff;
   }
 
   &__placeholder-card {
-    background-color: $bg-card;
+    background: $bg-card;
     height: 500px;
     border-radius: 12px;
     display: flex;
@@ -35,142 +35,111 @@ $text-white: #ffffff;
   &__export-btn {
     width: 100%;
     padding: 15px;
-    background-color: $yellow;
+    background: $yellow;
     border: none;
     border-radius: 8px;
-    font-weight: bold;
     font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
-    margin-top: 10px;
+    color: $text-dark;
   }
 
   &__actions {
     margin-top: 20px;
-    background-color: $bg-card;
-    padding: 24px;
-    border-radius: 16px;
-
-    .actions-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
+    background: $bg-card;
+    padding: 28px;
+    border-radius: 20px;
   }
 }
 
-.stats {
-  &__title {
-    color: $yellow;
-    font-size: 18px;
-    margin-bottom: 12px;
-  }
+.stats__title {
+  color: $yellow;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
 
-  &__card {
-    background-color: $bg-card;
-    padding: 20px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
+.stats__card {
+  background: $bg-card;
+  padding: 20px;
+  border-radius: 12px;
+}
 
-  &__row {
-    display: flex;
-    justify-content: space-between;
-  }
+.stats__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.action-btn {
+  height: 72px;
+  border-radius: 16px;
+  background: $yellow;
+  color: $text-dark;
+  font-size: 28px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .timer-display {
-  background-color: #2b2d33;
-  border: 2px solid $yellow;
-  box-shadow: 0 0 10px rgba(255, 231, 67, 0.3);
-  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #25272b;
   border-radius: 12px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
+  padding: 15px;
+  font-size: 22px;
+  font-weight: 700;
+  border: 2px solid $yellow;
+  box-shadow: 0 0 15px $yellow;
 }
 
 .activity-card {
-  background-color: $bg-card;
+  background: $bg-card;
   padding: 20px;
   border-radius: 12px;
   height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .chart-container {
-    height: 200px;
-    width: 200px;
-  }
-
-  .chart-legend {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 20px;
-    font-size: 12px;
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 16px;
-
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        &.figma { background: #d65c5c; }
-        &.miro { background: #a5b452; }
-        &.vscode { background: #5285b4; }
-        &.android { background: #4caf50; }
-      }
-    }
-  }
 }
 
-.btn {
-  padding: 15px;
-  border-radius: 8px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-
-  &--disabled { background-color: #7c7c7c; color: #333; cursor: not-allowed; }
-  &--yellow { background-color: $yellow; color: #000; }
-  &--red { background-color: #ff5252; color: #fff; }
+.chart-container {
+  width: 200px;
+  height: 200px;
 }
 
+.chart-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
 
-.timer-display {
+.legend-item {
   display: flex;
-  justify-content: center;
   align-items: center;
-  
-  background-color: #25272b;
-  color: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 30px;
-  
-  border: 2px solid $yellow;
-  box-shadow: 
-    0 0 10px $yellow,        
-    0 0 20px rgba(255, 231, 67, 0.6),
-    inset 0 0 10px $yellow,   
-    0 0 5px $yellow;        
-  animation: neon-glow 2s infinite alternate;
+  gap: 8px;
+  font-size: 16px;
 }
 
-@keyframes neon-glow {
-  from {
-    box-shadow: 0 0 10px $yellow, 0 0 20px rgba(255, 231, 67, 0.4), inset 0 0 8px $yellow;
-  }
-  to {
-    box-shadow: 0 0 15px $yellow, 0 0 35px rgba(255, 231, 67, 0.8), inset 0 0 12px $yellow;
-  }
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
+
+.dot.figma { background: #d65c5c; }
+.dot.miro { background: #a5b452; }
+.dot.vscode { background: #5285b4; }
+.dot.android { background: #4caf50; }

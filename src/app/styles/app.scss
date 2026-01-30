@@ -20,7 +20,13 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+
 }
+
+.dostup {
+  display: none;
+}
+
 .app {
   display: flex;
   align-items: start;
@@ -72,6 +78,20 @@ button {
 @media screen and (max-width: 1400px) {
   .container {
     max-width: 1140px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .dostup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    
+    .dostup_title {
+      font-size: 2rem;
+      color: #fee642;
+    }
   }
 }
 
